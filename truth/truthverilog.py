@@ -70,6 +70,10 @@ def out(igui):
     code.append("        #STEP;\n")
 
     outstring = ')&('.join(outconnect)
+    replacesets = [['H', 'r_H'], ['N', 'w_N'], ['=', '=='], ['assign', ''], [';', ''], ['\n', ''], [' ', '']]
+    import replacer as re
+    outstring = re.print_copy(outstring, replacesets)
+    '''
     outstring = outstring.replace('H', 'r_H')
     outstring = outstring.replace('N', 'w_N')
     outstring = outstring.replace('=', '==')
@@ -77,6 +81,7 @@ def out(igui):
     outstring = outstring.replace(';', '')
     outstring = outstring.replace('\n', '')
     outstring = outstring.replace(' ', '')
+    '''
 
     code.append("        if((" + outstring + ")) begin\n")
     code.append("            $display(\"[ %t]OK!\", $time);\n")
